@@ -43,7 +43,7 @@ SPOTIFY_TOKEN_URL = SPOTIFY_AUTH_BASE_URL.format('api/token')
 # PORT = int(os.environ.get("PORT", 8081))
 CLIENT_ID = os.environ["CLIENT_ID"]
 CLIENT_SECRET = os.environ["CLIENT_SECRET"]
-CLIENT_SIDE_URL = "https://hiasn-music-dash.heroku.com"
+CLIENT_SIDE_URL = "http://hiasn-music-dash.heroku.com"
 REDIRECT_URI = CLIENT_SIDE_URL + "/callback/"
 # REDIRECT_URI = "{}:{}/callback/".format(CLIENT_SIDE_URL, PORT)
 
