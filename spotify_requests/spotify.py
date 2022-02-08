@@ -46,7 +46,7 @@ CLIENT_SIDE_URL = "https://hiasn-music-dash.heroku.com"
 
 # PORT = 8081
 # REDIRECT_URI = "{}:{}/callback/".format(CLIENT_SIDE_URL, PORT)
-REDIRECT_URI = "{}:{}/callback/".format(CLIENT_SIDE_URL)
+REDIRECT_URI = CLIENT_SIDE_URL + "/callback/"
 
 SCOPE = "playlist-modify-public playlist-modify-private user-read-recently-played user-top-read"
 STATE = ""
