@@ -31,22 +31,21 @@ SPOTIFY_AUTH_BASE_URL = "https://accounts.spotify.com/{}"
 SPOTIFY_AUTH_URL = SPOTIFY_AUTH_BASE_URL.format('authorize')
 SPOTIFY_TOKEN_URL = SPOTIFY_AUTH_BASE_URL.format('api/token')
 
-# client keys
-#CLIENT = json.load(open('conf.json', 'r+'))
-#CLIENT_ID = CLIENT['id']
-#CLIENT_SECRET = CLIENT['secret']
+# LOCAL ENV
+# CLIENT = json.load(open('conf.json', 'r+'))
+# CLIENT_ID = CLIENT['id']
+# CLIENT_SECRET = CLIENT['secret']
+# CLIENT_SIDE_URL = "http://127.0.0.1"
+PORT = 8081
+# REDIRECT_URI = "{}:{}/callback/".format(CLIENT_SIDE_URL, PORT)
+
+# HEROKU
 CLIENT_ID = os.environ["CLIENT_ID"]
 CLIENT_SECRET = os.environ["CLIENT_SECRET"]
-
-# server side parameter
-# * fell free to change it if you want to, but make sure to change in
-# your spotify dev account as well *
-# CLIENT_SIDE_URL = "http://127.0.0.1"
 CLIENT_SIDE_URL = "https://hiasn-music-dash.heroku.com"
+# REDIRECT_URI = CLIENT_SIDE_URL + "/callback/"
+REDIRECT_URI = "{}:{}/callback/".format(CLIENT_SIDE_URL, PORT)
 
-# PORT = 8081
-# REDIRECT_URI = "{}:{}/callback/".format(CLIENT_SIDE_URL, PORT)
-REDIRECT_URI = CLIENT_SIDE_URL + "/callback/"
 
 SCOPE = "playlist-modify-public playlist-modify-private user-read-recently-played user-top-read"
 STATE = ""
