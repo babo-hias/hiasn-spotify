@@ -3,6 +3,7 @@ import base64
 import json
 import requests
 import sys
+import os
 
 # Workaround to support both python 2 & 3
 try:
@@ -31,14 +32,18 @@ SPOTIFY_AUTH_URL = SPOTIFY_AUTH_BASE_URL.format('authorize')
 SPOTIFY_TOKEN_URL = SPOTIFY_AUTH_BASE_URL.format('api/token')
 
 # client keys
-CLIENT = json.load(open('conf.json', 'r+'))
-CLIENT_ID = CLIENT['id']
-CLIENT_SECRET = CLIENT['secret']
+#CLIENT = json.load(open('conf.json', 'r+'))
+#CLIENT_ID = CLIENT['id']
+#CLIENT_SECRET = CLIENT['secret']
+CLIENT_ID = os.environ["CLIENT_ID"]
+CLIENT_SECRET = os.environ["CLIENT_SECRET"]
 
 # server side parameter
 # * fell free to change it if you want to, but make sure to change in
 # your spotify dev account as well *
-CLIENT_SIDE_URL = "http://127.0.0.1"
+# CLIENT_SIDE_URL = "http://127.0.0.1"
+CLIENT_SIDE_URL = "https://hiasn-music-dash.heroku.com"
+
 PORT = 8081
 REDIRECT_URI = "{}:{}/callback/".format(CLIENT_SIDE_URL, PORT)
 SCOPE = "playlist-modify-public playlist-modify-private user-read-recently-played user-top-read"
@@ -138,11 +143,5 @@ def get_users_top(auth_header, t):
 # https://developer.spotify.com/web-api/web-api-personalization-endpoints/get-recently-played/
 def get_users_recently_played(auth_header):
     url = USER_RECENTLY_PLAYED_ENDPOINT
-    resp = requests.get(url, headers=auth_header)
-    return resp.json()
-
-# https://developer.spotify.com/web-api/get-list-featured-playlists/
-def get_featured_playlists(auth_header):
-    url = BROWSE_FEATURED_PLAYLISTS
     resp = requests.get(url, headers=auth_header)
     return resp.json()

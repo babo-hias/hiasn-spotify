@@ -1,5 +1,6 @@
 from flask import Flask, request, redirect, g, render_template, session
 from spotify_requests import spotify
+import os
 
 app = Flask(__name__)
 app.secret_key = 'superduperkey1020'
@@ -44,7 +45,7 @@ def profile():
         recently_played = spotify.get_users_recently_played(auth_header)
 
         # get user top artists and tracks
-        top_tracks = spotify.get_users_top(auth_header, 'tracks')
+        # top_tracks = spotify.get_users_top(auth_header, 'tracks')
 
         if valid_token(recently_played):
             return render_template("profile.html",
