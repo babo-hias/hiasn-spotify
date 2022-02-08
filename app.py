@@ -3,6 +3,7 @@ from spotify_requests import spotify
 import os
 
 app = Flask(__name__)
+server = app.server
 app.secret_key = 'superduperkey1020'
 
 # ----------------------- AUTH API PROCEDURE -------------------------
@@ -57,4 +58,4 @@ def profile():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=spotify.PORT)
+    app.run_server(debug=True, port=spotify.PORT)
