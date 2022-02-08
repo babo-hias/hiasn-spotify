@@ -36,7 +36,7 @@ SPOTIFY_TOKEN_URL = SPOTIFY_AUTH_BASE_URL.format('api/token')
 # CLIENT_ID = CLIENT['id']
 # CLIENT_SECRET = CLIENT['secret']
 # CLIENT_SIDE_URL = "http://127.0.0.1"
-PORT = 33507
+PORT = 8081
 # REDIRECT_URI = "{}:{}/callback/".format(CLIENT_SIDE_URL, PORT)
 
 # HEROKU

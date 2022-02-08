@@ -57,5 +57,5 @@ def profile():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=spotify.PORT)
+    app.run(port=spotify.PORT)
     # app.run()
