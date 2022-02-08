@@ -44,8 +44,10 @@ CLIENT_SECRET = os.environ["CLIENT_SECRET"]
 # CLIENT_SIDE_URL = "http://127.0.0.1"
 CLIENT_SIDE_URL = "https://hiasn-music-dash.heroku.com"
 
-PORT = 8081
-REDIRECT_URI = "{}:{}/callback/".format(CLIENT_SIDE_URL, PORT)
+# PORT = 8081
+# REDIRECT_URI = "{}:{}/callback/".format(CLIENT_SIDE_URL, PORT)
+REDIRECT_URI = "{}:{}/callback/".format(CLIENT_SIDE_URL)
+
 SCOPE = "playlist-modify-public playlist-modify-private user-read-recently-played user-top-read"
 STATE = ""
 SHOW_DIALOG_bool = True
