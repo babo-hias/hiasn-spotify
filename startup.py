@@ -1,17 +1,16 @@
 from flask_spotify_auth import getAuth, refreshAuth, getToken
 
-# Add your client ID
-CLIENT = json.load(open('conf.json', 'r+'))
-# CLIENT_ID = CLIENT['id']
-CLIENT_ID = os.environ["CLIENT_ID"]
-
-# aDD YOUR CLIENT SECRET FROM SPOTIFY
-# CLIENT_SECRET = CLIENT['secret']
-CLIENT_SECRET = os.environ["CLIENT_SECRET"]
-
-# Callback and port
 PORT = "8081"
+
+# LOCAL
+# CLIENT = json.load(open('conf.json', 'r+'))
+# CLIENT_ID = CLIENT['id']
+# CLIENT_SECRET = CLIENT['secret']
 # CALLBACK_URL = "http://127.0.0.1"
+
+# HEROKU
+CLIENT_ID = os.environ["CLIENT_ID"]
+CLIENT_SECRET = os.environ["CLIENT_SECRET"]
 CALLBACK_URL = "https://www.hiasn-music-dash.heroku.com"
 
 # Add needed scope from spotify user
