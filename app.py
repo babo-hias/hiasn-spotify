@@ -2,6 +2,7 @@ import os
 from flask import Flask, session, request, redirect
 from flask_session import Session
 import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
 import uuid
 import json
 
@@ -18,7 +19,8 @@ CLIENT_SECRET = os.environ["CLIENT_SECRET"]
 REDIRECT_URI = "https://www.hiasn-music-dash.heroku.com:" + str(PORT)
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.urandom(64)
+# app.config['SECRET_KEY'] = os.urandom(64)
+app.config['SECRET_KEY'] = "supidupikey16"
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_FILE_DIR'] = './.flask_session/'
 Session(app)
@@ -37,10 +39,11 @@ def index():
         session['uuid'] = str(uuid.uuid4())
 
     cache_handler = spotipy.cache_handler.CacheFileHandler(cache_path=session_cache_path())
-    auth_manager = spotipy.oauth2.SpotifyOAuth(scope='playlist-modify-public playlist-modify-private user-read-recently-played user-top-read',
-                                               client_id=CLIENT_ID, client_secret=CLIENT_SECRET, redirect_uri=REDIRECT_URI,
-                                               cache_handler=cache_handler,
-                                               show_dialog=True)
+    # auth_manager = spotipy.oauth2.SpotifyOAuth(scope='playlist-modify-public playlist-modify-private user-read-recently-played user-top-read',
+    #                                            client_id=CLIENT_ID, client_secret=CLIENT_SECRET, redirect_uri=REDIRECT_URI,
+    #                                            cache_handler=cache_handler,
+    #                                            show_dialog=True)
+    auth_manager = SpotifyClientCredentials()
 
     if request.args.get("code"):
         # Step 3. Being redirected from Spotify auth page
@@ -120,4 +123,4 @@ def current_user():
 
 if __name__ == '__main__':
     app.run(threaded=True, port=int(os.getenv('PORT')))
-    # app.run(debug=True, threaded=True, port=8081)
+    # app.run(threaded=True, port=8081)
