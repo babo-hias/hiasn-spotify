@@ -119,5 +119,5 @@ def current_user():
 
 
 if __name__ == '__main__':
-    app.run(threaded=True, port=int(os.environ.get("PORT", 8081)))
+    app.run(threaded=True, port=int(os.getenv('PORT')))
     # app.run(debug=True, threaded=True, port=8081)
