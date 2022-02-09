@@ -32,19 +32,19 @@ SPOTIFY_AUTH_URL = SPOTIFY_AUTH_BASE_URL.format('authorize')
 SPOTIFY_TOKEN_URL = SPOTIFY_AUTH_BASE_URL.format('api/token')
 
 # LOCAL ENV
-# CLIENT = json.load(open('conf.json', 'r+'))
-# CLIENT_ID = CLIENT['id']
-# CLIENT_SECRET = CLIENT['secret']
-# CLIENT_SIDE_URL = "http://127.0.0.1"
-# PORT = 8081
-# REDIRECT_URI = "{}:{}/callback/".format(CLIENT_SIDE_URL, PORT)
+CLIENT = json.load(open('conf.json', 'r+'))
+CLIENT_ID = CLIENT['id']
+CLIENT_SECRET = CLIENT['secret']
+CLIENT_SIDE_URL = "http://127.0.0.1"
+PORT = 8081
+REDIRECT_URI = "{}:{}/callback/".format(CLIENT_SIDE_URL, PORT)
 
 # HEROKU
 # PORT = int(os.environ.get("PORT", 8081))
-CLIENT_ID = os.environ["CLIENT_ID"]
-CLIENT_SECRET = os.environ["CLIENT_SECRET"]
-CLIENT_SIDE_URL = "https://www.hiasn-music-dash.heroku.com"
-REDIRECT_URI = CLIENT_SIDE_URL + "/callback/"
+# CLIENT_ID = os.environ["CLIENT_ID"]
+# CLIENT_SECRET = os.environ["CLIENT_SECRET"]
+# CLIENT_SIDE_URL = "https://www.hiasn-music-dash.heroku.com"
+# REDIRECT_URI = CLIENT_SIDE_URL + "/callback/"
 # REDIRECT_URI = "{}:{}/callback/".format(CLIENT_SIDE_URL, PORT)
 
 

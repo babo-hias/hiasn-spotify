@@ -1,6 +1,7 @@
 from flask import Flask, request, redirect, g, render_template, session
 from spotify_requests import spotify
 import os
+import startup
 
 app = Flask(__name__)
 app.secret_key = 'superduperkey1020'
@@ -28,7 +29,9 @@ def valid_token(resp):
 
 @app.route("/")
 def index():
-    return render_template('index.html')
+    # return render_template('index.html')
+    response = startup.getUser()
+    return redirect(response)
 
 
 @app.route('/profile')
@@ -57,6 +60,6 @@ def profile():
 
 
 if __name__ == "__main__":
-    # app.run(port=spotify.PORT)
-    app.run()
+    app.run(port=spotify.PORT)
+    # app.run()
     # app.run(host='0.0.0.0', port=spotify.PORT)
