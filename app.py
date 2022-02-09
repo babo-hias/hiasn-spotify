@@ -39,11 +39,10 @@ def index():
         session['uuid'] = str(uuid.uuid4())
 
     cache_handler = spotipy.cache_handler.CacheFileHandler(cache_path=session_cache_path())
-    # auth_manager = spotipy.oauth2.SpotifyOAuth(scope='playlist-modify-public playlist-modify-private user-read-recently-played user-top-read',
-    #                                            client_id=CLIENT_ID, client_secret=CLIENT_SECRET, redirect_uri=REDIRECT_URI,
-    #                                            cache_handler=cache_handler,
-    #                                            show_dialog=True)
-    auth_manager = SpotifyClientCredentials()
+    auth_manager = spotipy.oauth2.SpotifyOAuth(scope='playlist-modify-public playlist-modify-private user-read-recently-played user-top-read',
+                                               client_id=CLIENT_ID, client_secret=CLIENT_SECRET, redirect_uri=REDIRECT_URI,
+                                               cache_handler=cache_handler,
+                                               show_dialog=True)
 
     if request.args.get("code"):
         # Step 3. Being redirected from Spotify auth page
