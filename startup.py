@@ -1,7 +1,7 @@
 from flask_spotify_auth import getAuth, refreshAuth, getToken
 import os
 
-PORT = "8081"
+# PORT = "8081"
 
 # LOCAL
 # CLIENT = json.load(open('conf.json', 'r+'))
@@ -22,12 +22,14 @@ TOKEN_DATA = []
 
 
 def getUser():
-    return getAuth(CLIENT_ID, "{}:{}/callback/".format(CALLBACK_URL, PORT), SCOPE)
+    # return getAuth(CLIENT_ID, "{}:{}/callback/".format(CALLBACK_URL, PORT), SCOPE)
+    return getAuth(CLIENT_ID, CALLBACK_URL + "/callback/", SCOPE)
 
 
 def getUserToken(code):
     global TOKEN_DATA
-    TOKEN_DATA = getToken(code, CLIENT_ID, CLIENT_SECRET, "{}:{}/callback/".format(CALLBACK_URL, PORT))
+    # TOKEN_DATA = getToken(code, CLIENT_ID, CLIENT_SECRET, "{}:{}/callback/".format(CALLBACK_URL, PORT))
+    TOKEN_DATA = getToken(code, CLIENT_ID, CLIENT_SECRET, CALLBACK_URL + "/callback/")
 
 
 def refreshToken(time):
