@@ -12,9 +12,10 @@ import json
 # REDIRECT_URI = 'http://127.0.0.1:8080'
 
 # HEROKU
+PORT = int(os.getenv('PORT'))
 CLIENT_ID = os.environ["CLIENT_ID"]
 CLIENT_SECRET = os.environ["CLIENT_SECRET"]
-REDIRECT_URI = "https://www.hiasn-music-dash.heroku.com:8081"
+REDIRECT_URI = "https://www.hiasn-music-dash.heroku.com:" + str(PORT)
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(64)
@@ -118,5 +119,5 @@ def current_user():
 
 
 if __name__ == '__main__':
-    # app.run(threaded=True, port=int(os.environ.get("PORT", os.environ.get("SPOTIPY_REDIRECT_URI", 8080).split(":")[-1])))
-    app.run(debug=True, threaded=True, port=8081)
+    app.run(threaded=True, port=int(os.environ.get("PORT", 8081)))
+    # app.run(debug=True, threaded=True, port=8081)
